@@ -1,3 +1,4 @@
+const pry = require('pryjs');
 function bubbleSort(sugArray) {
   for(var x = 0; x<sugArray.length; x++) {
     for(var n = 0; n < sugArray.length; n++) {

@@ -5,22 +5,24 @@ function mergeSort(sugArray) {
     return sugArray;
   }else {
     var mid = (sugArray.length / 2);
-    var left = mergeSort(sugArray.slice(0,mid));
-    var right = mergeSort(sugArray.slice(mid, sugArray.length + 1));
-    return merge(left, right);
+    var left = sugArray.slice(0,mid);
+    var right = sugArray.slice(mid, sugArray.length + 1);
+    return merge(mergeSort(left), mergeSort(right));
   }
 }
 
 function merge(left, right) {
-  if(left.length < 1) {
-     right;
-  }else if(right.length < 1){
-     left;
+  var stack = [];
+  if(left.length) {
+     Array.prototype.push.apply(stack, left);
+  }else if(right.length){
+     Array.prototype.push.apply(stack, right);
   }else if(left[0] < right[0]){
-     [left[0]].push(merge(left.slice(1,left.length), right));
+    stack.push(left.shift());
   }else{
-     [right[0]].push(merge(left, right.slice(1,right.length)));
+    stack.push(right.shift());
   }
+  return stack
 }
 
 module.exports = mergeSort

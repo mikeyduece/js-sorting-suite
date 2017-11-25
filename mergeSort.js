@@ -6,23 +6,24 @@ function mergeSort(sugArray) {
   }else {
     var mid = (sugArray.length / 2);
     var left = sugArray.slice(0,mid);
-    var right = sugArray.slice(mid, sugArray.length + 1);
-    return merge(mergeSort(left), mergeSort(right));
+    var right = sugArray.slice(mid, sugArray.length);
+  eval(pry.it);
+    return merged(mergeSort(left), mergeSort(right));
   }
 }
 
-function merge(left, right) {
-  var stack = [];
+function merged(left, right) {
+  var stackSorted = [];
   if(left.length) {
-     Array.prototype.push.apply(stack, left);
+     Array.prototype.push.apply(stackSorted, left);
   }else if(right.length){
-     Array.prototype.push.apply(stack, right);
+     Array.prototype.push.apply(stackSorted, right);
   }else if(left[0] < right[0]){
-    stack.push(left.shift());
+    stackSorted.push(left.shift());
   }else{
-    stack.push(right.shift());
+    stackSorted.push(right.shift());
   }
-  return stack
+  return stackSorted
 }
 
 module.exports = mergeSort
